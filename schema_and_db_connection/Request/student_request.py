@@ -4,4 +4,4 @@ from pydantic import BaseModel
 class UserRequest(BaseModel):
     name: str
     email: str
-    description: str | None
+    description: str | None = None
