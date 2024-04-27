@@ -7,4 +7,4 @@ class User(Base):
     id = Column(INTEGER, primary_key=True, autoincrement=True)
     name = Column(VARCHAR)
     email = Column(VARCHAR, unique=True)
-    description = Column(VARCHAR)
+    description = Column(VARCHAR, nullable=True)
