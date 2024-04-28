@@ -75,6 +75,14 @@ def delete_specific_user_info(id, db: Session = Depends(get_db)):
     return {"message": "deletion successful", "data": delete_info}
 
 
-
-
-
+@app.put("/user_data/{id}", status_code=status.HTTP_200_OK)
+def update_user_info(id, user_info: UserRequest, db: Session = Depends(get_db)):
+    update = db.query(User).filter(User.id == id)
+    if update is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Data not found")
+    elif not update:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="There is no data")
+    else:
+        update.update(user_info.dict())
+        db.commit()
+    return {"message": "Update successful"}
