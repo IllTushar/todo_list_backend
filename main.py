@@ -1,5 +1,3 @@
-import uvicorn
-
 from fastapi import FastAPI, HTTPException, status
 from fastapi.params import Depends
 from sqlalchemy.orm import Session
